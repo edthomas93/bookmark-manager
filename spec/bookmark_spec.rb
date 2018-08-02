@@ -19,4 +19,11 @@ describe Bookmark do
       expect(Bookmark.all).to eq expected_bookmarks
     end
   end
+
+  describe '.create' do
+    it 'creates a new bookmark' do
+      Bookmark.create(url: 'http://ed.com')
+      expect(Bookmark.all).to include 'http://ed.com'
+    end
+  end
 end
