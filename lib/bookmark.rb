@@ -21,4 +21,8 @@ class Bookmark
 
     connection.exec("INSERT INTO bookmarks (url) VALUES('#{options[:url]}')")
   end
+
+  def self.valid_url?(url)
+    url =~ /\A#{URI::regexp(['http', 'https'])}\z/
+  end
 end

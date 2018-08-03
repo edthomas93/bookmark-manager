@@ -9,4 +9,13 @@ feature 'submit a new bookmark' do
 
     expect(page).to have_content "http://makersacademy.com"
   end
+
+  scenario 'error message if URL is not real' do
+    visit ('/submit-bookmarks')
+    fill_in('url', with: 'evie.korea.io')
+    click_button 'Submit'
+
+    expect(page).not_to have_content "evie.korea.io"
+    expect(page).to have_content "URL does not exist"
+  end
 end

@@ -22,5 +22,10 @@ describe Bookmark do
       Bookmark.create(url: 'http://ed.com')
       expect(Bookmark.all).to include 'http://ed.com'
     end
+
+    it 'raises error if URL not real' do
+      Bookmark.create(url: 'evie.korea.io')
+      expect(Bookmark.all).not_to include 'URL does not exist'
+    end
   end
 end
